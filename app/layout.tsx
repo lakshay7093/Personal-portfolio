@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     siteName: "Lakshay Saini Portfolio",
     images: [
       {
-        url: "/images/1.jpg",
+        url: "/profile.jpg",
         width: 1200,
         height: 630,
         alt: "Lakshay Saini - Full Stack Developer",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Lakshay Saini - Full Stack Developer",
     description: "Full Stack Developer specializing in React, Next.js, React Native, and Firebase.",
-    images: ["/images/1.jpg"],
+    images: ["/profile.jpg"],
     creator: "@lakshaysaini",
   },
   robots: {

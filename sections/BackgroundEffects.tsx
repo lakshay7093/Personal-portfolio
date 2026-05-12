@@ -1,23 +1,55 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 
-// Generate random particles
-const generateParticles = (count: number) => {
-  return Array.from({ length: count }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 3 + 1,
-    duration: Math.random() * 20 + 10,
-    delay: Math.random() * 5,
-  }));
+const createSeededRandom = (seed: number) => {
+  let value = seed;
+
+  return () => {
+    value = (value * 1664525 + 1013904223) >>> 0;
+    return value / 4294967296;
+  };
 };
 
-export default function BackgroundEffects() {
-  const [particles] = useState(() => generateParticles(50));
+const particleRandom = createSeededRandom(20240512);
+const starRandom = createSeededRandom(19980527);
 
+const particles = Array.from({ length: 50 }, (_, i) => {
+  const x = particleRandom() * 100;
+  const y = particleRandom() * 100;
+  const size = particleRandom() * 3 + 1;
+  const duration = particleRandom() * 20 + 10;
+  const delay = particleRandom() * 5;
+
+  return {
+    id: i,
+    x,
+    y,
+    size,
+    duration,
+    delay,
+  };
+});
+
+const stars = Array.from({ length: 100 }, (_, i) => {
+  const x = starRandom() * 100;
+  const y = starRandom() * 100;
+  const duration = starRandom() * 3 + 2;
+  const delay = starRandom() * 5;
+
+  return {
+    id: i,
+    x,
+    y,
+    duration,
+    delay,
+  };
+});
+
+// Keep decorative positions stable between SSR and hydration.
+const formatPercent = (value: number) => `${value.toFixed(4)}%`;
+
+export default function BackgroundEffects() {
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden bg-black">
 
@@ -168,12 +200,12 @@ export default function BackgroundEffects() {
 
       {/* Starfield Effect */}
       <div className="absolute inset-0">
-        {Array.from({ length: 100 }).map((_, i) => (
+        {stars.map((star) => (
           <motion.div
-            key={`star-${i}`}
+            key={`star-${star.id}`}
             initial={{
-              x: Math.random() * 100 + "%",
-              y: Math.random() * 100 + "%",
+              x: formatPercent(star.x),
+              y: formatPercent(star.y),
               scale: 0,
             }}
             animate={{
@@ -181,9 +213,9 @@ export default function BackgroundEffects() {
               opacity: [0, 1, 0],
             }}
             transition={{
-              duration: Math.random() * 3 + 2,
+              duration: star.duration,
               repeat: Infinity,
-              delay: Math.random() * 5,
+              delay: star.delay,
               ease: "easeInOut",
             }}
             className="absolute w-[2px] h-[2px] bg-white rounded-full"

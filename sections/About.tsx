@@ -148,7 +148,7 @@ export default function About() {
                 <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 rounded-full blur-xl opacity-75 group-hover:opacity-100 transition duration-500 animate-pulse" />
                 <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-white/10 shadow-[0_0_60px_rgba(168,85,247,0.4)]">
                   <img 
-                    src="/images/1.jpg" 
+                    src="/profile.jpg" 
                     alt="Lakshay Saini" 
                     className="w-full h-full object-cover scale-[1.00]"
                     style={{ objectPosition: '70% 8%' }}
