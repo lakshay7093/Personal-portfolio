@@ -9,6 +9,7 @@ import {
   ExternalLink, CheckCircle2, Calendar,
   Building2, BookOpen,
 } from "lucide-react";
+import { useResumeDownload } from "@/lib/useResumeDownload";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // REAL RESUME DATA
@@ -165,6 +166,8 @@ function SectionHeading({ label, title, gradient }: { label: string; title: stri
 // PAGE
 // ─────────────────────────────────────────────────────────────────────────────
 export default function AboutPage() {
+  const handleResumeDownload = useResumeDownload();
+
   return (
     <main className="bg-black text-white overflow-hidden min-h-screen">
       <BackgroundEffects />
@@ -217,9 +220,7 @@ export default function AboutPage() {
             <div className="flex flex-wrap gap-4 justify-center mt-8">
               <a
                 href="/resume.pdf"
-                download="Lakshay_Saini_Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+                onClick={handleResumeDownload}
                 className="flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-500 hover:opacity-90 hover:scale-105 transition-all duration-300 px-7 py-3.5 rounded-2xl font-semibold text-sm shadow-[0_0_30px_rgba(168,85,247,0.4)]"
               >
                 <Download size={15} /> Download Resume

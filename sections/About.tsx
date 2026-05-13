@@ -8,6 +8,7 @@ import {
   ArrowRight, Download, Briefcase, BookOpen,
   CheckCircle2, Building2, Calendar,
 } from "lucide-react";
+import { useResumeDownload } from "@/lib/useResumeDownload";
 
 // ─── Stat cards ───────────────────────────────────────────────────────────────
 const stats = [
@@ -123,6 +124,8 @@ function ZigzagCard({ children, index, hoverBorder, hoverGlow, glowBg, gradient 
 
 // ─── Main component ───────────────────────────────────────────────────────────
 export default function About() {
+  const handleResumeDownload = useResumeDownload();
+
   return (
     <section
   id="about"
@@ -181,7 +184,7 @@ export default function About() {
               <button onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })} className="flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-500 hover:opacity-90 transition-all duration-300 px-6 md:px-8 py-3.5 md:py-4 rounded-2xl font-semibold text-sm md:text-base shadow-[0_0_35px_rgba(168,85,247,0.35)] hover:scale-105">
                 View Projects <ArrowRight size={16} />
               </button>
-              <a href="/resume.pdf" download="Lakshay_Saini_Resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 border border-white/10 hover:border-purple-500 bg-white/5 backdrop-blur-xl transition-all duration-300 px-6 md:px-8 py-3.5 md:py-4 rounded-2xl text-sm md:text-base hover:scale-105">
+              <a href="/resume.pdf" onClick={handleResumeDownload} className="flex items-center gap-2 border border-white/10 hover:border-purple-500 bg-white/5 backdrop-blur-xl transition-all duration-300 px-6 md:px-8 py-3.5 md:py-4 rounded-2xl text-sm md:text-base hover:scale-105">
                 <Download size={16} /> Resume
               </a>
             </div>

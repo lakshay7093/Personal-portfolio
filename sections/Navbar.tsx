@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Download, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useResumeDownload } from "@/lib/useResumeDownload";
 
 const navItems = [
   { name: "Home", section: "hero" },
@@ -16,30 +17,7 @@ export default function Navbar() {
   const [active, setActive] = useState("hero");
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
-  const handleResumeDownload = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    // For mobile browsers, force download using fetch + blob
-    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-      e.preventDefault();
-      fetch('/resume.pdf')
-        .then(response => response.blob())
-        .then(blob => {
-          const url = window.URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = url;
-          a.download = 'Lakshay_Saini_Resume.pdf';
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-          window.URL.revokeObjectURL(url);
-        })
-        .catch(() => {
-          // Fallback: open in new tab
-          window.open('/resume.pdf', '_blank');
-        });
-      setMobileOpen(false);
-    }
-  };
+  const handleResumeDownload = useResumeDownload();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
