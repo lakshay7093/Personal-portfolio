@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const ogImageUrl = `${siteUrl}/og-image.png?v=2`;
+const ogImageUrl = `${siteUrl}/og-image.png?v=${Date.now()}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
