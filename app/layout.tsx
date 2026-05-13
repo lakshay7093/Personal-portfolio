@@ -16,8 +16,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://lakshaysaini.vercel.app";
+const ogImageUrl = `${siteUrl}/og-image.png?v=2`;
+
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  metadataBase: new URL(siteUrl),
   title: "Lakshay Saini - Full Stack Developer | React Native & Next.js Expert",
   description:
     "Full Stack Developer specializing in React, Next.js, React Native, Firebase, and TypeScript. Building scalable web and mobile applications with 2+ years of experience. Currently pursuing MCA at Government PG College, Dharamshala.",
@@ -51,7 +54,7 @@ export const metadata: Metadata = {
     siteName: "Lakshay Saini Portfolio",
     images: [
       {
-        url: "/og-image.png",
+        url: ogImageUrl,
         width: 1731,
         height: 909,
         alt: "Lakshay Saini - Full Stack Developer",
@@ -62,7 +65,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Lakshay Saini - Full Stack Developer",
     description: "Full Stack Developer specializing in React, Next.js, React Native, and Firebase.",
-    images: ["/og-image.png"],
+    images: [ogImageUrl],
     creator: "@lakshaysaini",
   },
   robots: {
