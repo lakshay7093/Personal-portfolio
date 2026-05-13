@@ -1,9 +1,9 @@
 export const useResumeDownload = () => {
   const handleDownload = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    // Simplest and fastest - direct open in new tab
-    // Works on all browsers including mobile
-    window.open('/resume.pdf', '_blank', 'noopener,noreferrer');
+    // Use API route which sends proper Content-Disposition: attachment header
+    // This forces direct download on all browsers including mobile
+    window.location.href = '/api/resume';
   };
 
   return handleDownload;
