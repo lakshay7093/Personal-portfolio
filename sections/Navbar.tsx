@@ -17,6 +17,30 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  const handleResumeDownload = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // For mobile browsers, force download using fetch + blob
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+      e.preventDefault();
+      fetch('/resume.pdf')
+        .then(response => response.blob())
+        .then(blob => {
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'Lakshay_Saini_Resume.pdf';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          window.URL.revokeObjectURL(url);
+        })
+        .catch(() => {
+          // Fallback: open in new tab
+          window.open('/resume.pdf', '_blank');
+        });
+      setMobileOpen(false);
+    }
+  };
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -112,6 +136,7 @@ export default function Navbar() {
                   download="Lakshay_Saini_Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={handleResumeDownload}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="hidden md:flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-500 hover:opacity-90 transition-all duration-300 px-7 py-3 rounded-xl font-bold text-sm shadow-[0_0_30px_rgba(168,85,247,0.45)] text-white"
@@ -161,7 +186,7 @@ export default function Navbar() {
                 download="Lakshay_Saini_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => setMobileOpen(false)}
+                onClick={handleResumeDownload}
                 className="flex items-center gap-2 mt-1 px-5 py-4 rounded-2xl bg-gradient-to-r from-purple-600 to-pink-500 font-bold text-base justify-center text-white"
               >
                 <Download size={16} />
