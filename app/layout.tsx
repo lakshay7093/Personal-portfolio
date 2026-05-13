@@ -21,9 +21,13 @@ const ogImageUrl = `${siteUrl}/linkedin-og.png`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Lakshay Saini - Full Stack Developer | React Native & Next.js Expert",
+
+  title:
+    "Lakshay Saini - Full Stack Developer | React Native & Next.js Expert",
+
   description:
-    "Full Stack Developer specializing in React, Next.js, React Native, Firebase, and TypeScript. Building scalable web and mobile applications with 2+ years of experience. Currently pursuing MCA at Government PG College, Dharamshala.",
+    "Full Stack Developer specializing in React, Next.js, React Native, Firebase, and TypeScript. Building scalable web and mobile applications with modern technologies.",
+
   keywords: [
     "Lakshay Saini",
     "Full Stack Developer",
@@ -37,40 +41,57 @@ export const metadata: Metadata = {
     "Frontend Developer",
     "Backend Developer",
     "Node.js Developer",
-    "Dharamshala Developer",
-    "Himachal Pradesh Developer",
     "Portfolio",
     "Software Engineer",
   ],
-  authors: [{ name: "Lakshay Saini", url: "https://github.com/lakshay7093" }],
+
+  authors: [
+    {
+      name: "Lakshay Saini",
+      url: "https://github.com/lakshay7093",
+    },
+  ],
+
   creator: "Lakshay Saini",
   publisher: "Lakshay Saini",
+
   openGraph: {
     type: "website",
     locale: "en_US",
     url: siteUrl,
+
     title: "Lakshay Saini - Full Stack Developer",
-    description: "Full Stack Developer specializing in React, Next.js, React Native, and Firebase. Building scalable applications with modern technologies.",
+
+    description:
+      "Full Stack Developer specializing in React, Next.js, React Native, and Firebase.",
+
     siteName: "Lakshay Saini Portfolio",
+
     images: [
       {
         url: ogImageUrl,
-        width: 1731,
-        height: 909,
-        alt: "Lakshay Saini - Full Stack Developer",
+        width: 1200,
+        height: 630,
+        alt: "Lakshay Saini Portfolio Preview",
       },
     ],
   },
+
   twitter: {
     card: "summary_large_image",
+
     title: "Lakshay Saini - Full Stack Developer",
-    description: "Full Stack Developer specializing in React, Next.js, React Native, and Firebase.",
+
+    description:
+      "Full Stack Developer specializing in React, Next.js, React Native, and Firebase.",
+
     images: [ogImageUrl],
-    creator: "@lakshaysaini",
   },
+
   robots: {
     index: true,
     follow: true,
+
     googleBot: {
       index: true,
       follow: true,
@@ -94,6 +115,7 @@ export default function RootLayout({
       <head>
         <StructuredData />
       </head>
+
       <body className="min-h-full flex flex-col bg-black text-white">
         <ScrollProgress />
         <Navbar />
