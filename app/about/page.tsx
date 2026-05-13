@@ -217,7 +217,9 @@ export default function AboutPage() {
             <div className="flex flex-wrap gap-4 justify-center mt-8">
               <a
                 href="/resume.pdf"
-                download
+                download="Lakshay_Saini_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-500 hover:opacity-90 hover:scale-105 transition-all duration-300 px-7 py-3.5 rounded-2xl font-semibold text-sm shadow-[0_0_30px_rgba(168,85,247,0.4)]"
               >
                 <Download size={15} /> Download Resume

@@ -109,7 +109,9 @@ export default function Navbar() {
               <div className="flex items-center gap-3 flex-shrink-0">
                 <motion.a
                   href="/resume.pdf"
-                  download
+                  download="Lakshay_Saini_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="hidden md:flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-500 hover:opacity-90 transition-all duration-300 px-7 py-3 rounded-xl font-bold text-sm shadow-[0_0_30px_rgba(168,85,247,0.45)] text-white"
@@ -156,7 +158,9 @@ export default function Navbar() {
               ))}
               <a
                 href="/resume.pdf"
-                download
+                download="Lakshay_Saini_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setMobileOpen(false)}
                 className="flex items-center gap-2 mt-1 px-5 py-4 rounded-2xl bg-gradient-to-r from-purple-600 to-pink-500 font-bold text-base justify-center text-white"
               >

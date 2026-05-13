@@ -139,7 +139,9 @@ export default function Hero() {
 
           <a
             href="/resume.pdf"
-            download
+            download="Lakshay_Saini_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-2 border border-white/10 hover:border-purple-500 bg-white/5 backdrop-blur-xl transition-all duration-300 px-7 sm:px-10 py-3.5 sm:py-4 rounded-2xl text-base sm:text-lg hover:scale-105"
           >
             <Download size={18} />
