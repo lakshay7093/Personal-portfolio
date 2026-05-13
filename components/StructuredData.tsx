@@ -1,10 +1,12 @@
+import { siteUrl } from "@/lib/site";
+
 export default function StructuredData() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Lakshay Saini",
-    url: "https://lakshaysaini.vercel.app",
-    image: "https://lakshaysaini.vercel.app/profile.jpg",
+    url: siteUrl,
+    image: `${siteUrl}/profile.jpg`,
     sameAs: [
       "https://github.com/lakshay7093",
       "https://www.linkedin.com/in/lakshay-saini-6905b728a/",

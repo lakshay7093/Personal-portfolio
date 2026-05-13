@@ -5,6 +5,7 @@ import Navbar from "@/sections/Navbar";
 import ScrollToTop from "@/components/ScrollToTop";
 import ScrollProgress from "@/components/ScrollProgress";
 import StructuredData from "@/components/StructuredData";
+import { siteUrl } from "@/lib/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,7 +17,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://lakshaysaini.vercel.app";
 const ogImageUrl = `${siteUrl}/og-image.png?v=2`;
 
 export const metadata: Metadata = {
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://lakshaysaini.vercel.app",
+    url: siteUrl,
     title: "Lakshay Saini - Full Stack Developer",
     description: "Full Stack Developer specializing in React, Next.js, React Native, and Firebase. Building scalable applications with modern technologies.",
     siteName: "Lakshay Saini Portfolio",
