@@ -1,13 +1,7 @@
 import Hero from "@/sections/Hero";
-import About from "@/sections/About";
-import Services from "@/sections/Services";
-import Projects from "@/sections/Projects";
-import Skills from "@/sections/Skills";
-import Achievements from "@/sections/Achievements";
-import Testimonials from "@/sections/Testimonials";
-import Contact from "@/sections/Contact";
 import BackgroundEffects from "@/sections/BackgroundEffects";
 import CursorTrail from "@/components/CursorTrail";
+import LazyHomeSections from "@/components/LazyHomeSections";
 
 export default function Home() {
   return (
@@ -15,13 +9,7 @@ export default function Home() {
       <BackgroundEffects />
       <CursorTrail />
       <Hero />
-      <About />
-      <Services />
-      <Projects />
-      <Skills />
-      <Achievements />
-      <Testimonials />
-      <Contact />
+      <LazyHomeSections />
     </main>
   );
 }

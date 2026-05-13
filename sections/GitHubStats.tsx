@@ -76,6 +76,9 @@ export default function GitHubStats() {
     .filter(stat => stat.value > 0)
     .sort((a, b) => b.value - a.value)
     .slice(0, 4); // Take top 4
+
+  const visibleStats = isLoading ? allStats : stats;
+
   return (
     <section
       id="github"
@@ -111,8 +114,8 @@ export default function GitHubStats() {
         </motion.div>
 
         {/* Stats Grid */}
-        <div className={`grid gap-6 md:gap-8 mb-12 ${stats.length === 4 ? 'grid-cols-2 lg:grid-cols-4' : stats.length === 3 ? 'grid-cols-2 lg:grid-cols-3' : 'grid-cols-2'}`}>
-          {stats.map((stat, index) => (
+        <div className={`grid gap-6 md:gap-8 mb-12 ${visibleStats.length === 4 ? 'grid-cols-2 lg:grid-cols-4' : visibleStats.length === 3 ? 'grid-cols-2 lg:grid-cols-3' : 'grid-cols-2'}`}>
+          {visibleStats.map((stat, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 60 }}

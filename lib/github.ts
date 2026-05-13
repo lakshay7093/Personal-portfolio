@@ -11,6 +11,25 @@ export interface GitHubStats {
   accountCreated: string;
 }
 
+interface GitHubUserResponse {
+  created_at: string;
+  public_repos?: number;
+  followers?: number;
+  following?: number;
+}
+
+interface GitHubRepoResponse {
+  stargazers_count?: number;
+  forks_count?: number;
+}
+
+interface GitHubEventResponse {
+  type: string;
+  payload?: {
+    commits?: unknown[];
+  };
+}
+
 const GITHUB_USERNAME = "lakshay7093";
 const CACHE_DURATION = 3600000; // 1 hour in milliseconds
 
@@ -44,7 +63,7 @@ export async function fetchGitHubStats(): Promise<GitHubStats> {
       throw new Error("Failed to fetch GitHub user data");
     }
 
-    const userData = await userResponse.json();
+    const userData = (await userResponse.json()) as GitHubUserResponse;
 
     // Calculate years active on GitHub
     const accountCreated = new Date(userData.created_at);
@@ -66,15 +85,15 @@ export async function fetchGitHubStats(): Promise<GitHubStats> {
       throw new Error("Failed to fetch GitHub repos");
     }
 
-    const repos = await reposResponse.json();
+    const repos = (await reposResponse.json()) as GitHubRepoResponse[];
 
     // Calculate total stars and forks
     const totalStars = repos.reduce(
-      (acc: number, repo: any) => acc + repo.stargazers_count,
+      (acc, repo) => acc + (repo.stargazers_count || 0),
       0
     );
     const totalForks = repos.reduce(
-      (acc: number, repo: any) => acc + repo.forks_count,
+      (acc, repo) => acc + (repo.forks_count || 0),
       0
     );
 
@@ -93,12 +112,12 @@ export async function fetchGitHubStats(): Promise<GitHubStats> {
         );
 
         if (eventsResponse.ok) {
-          const events = await eventsResponse.json();
+          const events = (await eventsResponse.json()) as GitHubEventResponse[];
           if (events.length === 0) break;
           
-          const pushEvents = events.filter((e: any) => e.type === "PushEvent");
+          const pushEvents = events.filter((event) => event.type === "PushEvent");
           const commitsInPage = pushEvents.reduce(
-            (acc: number, event: any) => acc + (event.payload?.commits?.length || 0),
+            (acc, event) => acc + (event.payload?.commits?.length || 0),
             0
           );
           totalCommits += commitsInPage;

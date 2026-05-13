@@ -5,6 +5,7 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function CursorTrail() {
   const [isVisible, setIsVisible] = useState(false);
+  const [isFinePointer, setIsFinePointer] = useState(false);
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
@@ -13,6 +14,28 @@ export default function CursorTrail() {
   const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia("(pointer: fine)");
+
+    const updatePointerType = () => {
+      setIsFinePointer(mediaQuery.matches);
+      if (!mediaQuery.matches) {
+        setIsVisible(false);
+      }
+    };
+
+    updatePointerType();
+    mediaQuery.addEventListener("change", updatePointerType);
+
+    return () => {
+      mediaQuery.removeEventListener("change", updatePointerType);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isFinePointer) {
+      return;
+    }
+
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
@@ -28,7 +51,11 @@ export default function CursorTrail() {
       window.removeEventListener("mousemove", moveCursor);
       window.removeEventListener("mouseleave", hideCursor);
     };
-  }, [cursorX, cursorY]);
+  }, [cursorX, cursorY, isFinePointer]);
+
+  if (!isFinePointer) {
+    return null;
+  }
 
   return (
     <>

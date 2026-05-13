@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const createSeededRandom = (seed: number) => {
   let value = seed;
@@ -50,6 +51,42 @@ const stars = Array.from({ length: 100 }, (_, i) => {
 const formatPercent = (value: number) => `${value.toFixed(4)}%`;
 
 export default function BackgroundEffects() {
+  const [shouldUseHeavyMotion, setShouldUseHeavyMotion] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(
+      "(min-width: 768px) and (prefers-reduced-motion: no-preference)"
+    );
+
+    const updateMotionPreference = () => {
+      setShouldUseHeavyMotion(mediaQuery.matches);
+    };
+
+    updateMotionPreference();
+    mediaQuery.addEventListener("change", updateMotionPreference);
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateMotionPreference);
+    };
+  }, []);
+
+  if (!shouldUseHeavyMotion) {
+    return (
+      <div className="fixed inset-0 -z-10 overflow-hidden bg-black">
+        <div className="absolute inset-0 opacity-25 bg-[radial-gradient(circle_at_20%_20%,rgba(168,85,247,0.16),transparent_34%),radial-gradient(circle_at_80%_25%,rgba(236,72,153,0.12),transparent_32%),radial-gradient(circle_at_50%_85%,rgba(6,182,212,0.12),transparent_36%)]" />
+        <div
+          className="absolute inset-0 opacity-[0.035]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(168, 85, 247, 0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(168, 85, 247, 0.12) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }}
+        />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,black_90%)]" />
+      </div>
+    );
+  }
+
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden bg-black">
 

@@ -5,7 +5,7 @@ import BackgroundEffects from "@/sections/BackgroundEffects";
 import Link from "next/link";
 import {
   ArrowRight, Download, MapPin, Mail, Phone,
-  Briefcase, GraduationCap, Award, User,
+  Briefcase, GraduationCap, User,
   ExternalLink, CheckCircle2, Calendar,
   Building2, BookOpen,
 } from "lucide-react";
