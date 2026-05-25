@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
 import Navbar from "@/sections/Navbar";
 import ScrollToTop from "@/components/ScrollToTop";
 import ScrollProgress from "@/components/ScrollProgress";
 import StructuredData from "@/components/StructuredData";
+
 import { siteUrl } from "@/lib/site";
 
 const geistSans = Geist({
@@ -17,16 +19,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const ogImageUrl = `${siteUrl}/og-image.png?v=${Date.now()}`;
+const ogImageUrl = `${siteUrl}/og-image.png`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
 
   title:
-    "Lakshay Saini - Full Stack Developer | React Native & Next.js Expert",
+    "Lakshay Saini | Full Stack Developer Portfolio | React Native & Next.js",
 
   description:
-    "Full Stack Developer specializing in React, Next.js, React Native, Firebase, and TypeScript. Building scalable web and mobile applications with modern technologies.",
+    "Lakshay Saini is a Full Stack Developer specializing in React, Next.js, React Native, Firebase, TypeScript, and scalable web & mobile applications.",
 
   keywords: [
     "Lakshay Saini",
@@ -36,13 +38,18 @@ export const metadata: Metadata = {
     "React Native Developer",
     "Firebase Developer",
     "TypeScript Developer",
-    "Web Developer",
-    "Mobile App Developer",
+    "JavaScript Developer",
+    "MERN Stack Developer",
     "Frontend Developer",
     "Backend Developer",
     "Node.js Developer",
-    "Portfolio",
+    "Web Developer",
+    "Mobile App Developer",
+    "Freelance Developer",
+    "Portfolio Website",
     "Software Engineer",
+    "India Full Stack Developer",
+    "Next.js Portfolio",
   ],
 
   authors: [
@@ -55,15 +62,26 @@ export const metadata: Metadata = {
   creator: "Lakshay Saini",
   publisher: "Lakshay Saini",
 
+  alternates: {
+    canonical: "https://lakshaysaini.vercel.app",
+  },
+
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
+
   openGraph: {
     type: "website",
     locale: "en_US",
     url: siteUrl,
 
-    title: "Lakshay Saini - Full Stack Developer",
+    title:
+      "Lakshay Saini | Full Stack Developer Portfolio",
 
     description:
-      "Full Stack Developer specializing in React, Next.js, React Native, and Firebase.",
+      "Full Stack Developer specializing in React, Next.js, React Native, Firebase, and TypeScript.",
 
     siteName: "Lakshay Saini Portfolio",
 
@@ -80,10 +98,11 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
 
-    title: "Lakshay Saini - Full Stack Developer",
+    title:
+      "Lakshay Saini | Full Stack Developer",
 
     description:
-      "Full Stack Developer specializing in React, Next.js, React Native, and Firebase.",
+      "React, Next.js, React Native & TypeScript Developer Portfolio.",
 
     images: [ogImageUrl],
   },
@@ -100,6 +119,8 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+
+  category: "technology",
 };
 
 export default function RootLayout({
