@@ -1,17 +1,21 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GitBranch, Star, Code2, Activity } from "lucide-react";
+import { GitBranch, Star, Code2, GitFork } from "lucide-react";
 import { useEffect, useState } from "react";
-import { fetchGitHubStats, formatStatValue, type GitHubStats as GitHubStatsType } from "@/lib/github";
+import { formatStatValue, type GitHubStats as GitHubStatsType } from "@/lib/github";
 
 export default function GitHubStats() {
   const [githubData, setGithubData] = useState<GitHubStatsType | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetchGitHubStats()
-      .then(setGithubData)
+    fetch("/api/github-stats")
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to fetch");
+        return res.json();
+      })
+      .then((data: GitHubStatsType) => setGithubData(data))
       .catch((error) => {
         console.error("Failed to load GitHub stats:", error);
         setGithubData(null);
@@ -34,18 +38,6 @@ export default function GitHubStats() {
       iconBg: "group-hover:bg-purple-500/15",
     },
     {
-      label: "Total Contributions",
-      value: githubData?.totalCommits || 0,
-      displayValue: githubData ? formatStatValue(githubData.totalCommits) : "...",
-      Icon: Activity,
-      gradient: "from-cyan-500 to-blue-500",
-      hoverBorder: "hover:border-cyan-500/50",
-      hoverGlow: "group-hover:shadow-[0_0_60px_rgba(6,182,212,0.2)]",
-      glowBg: "from-cyan-500/10 to-blue-500/5",
-      iconColor: "group-hover:text-cyan-400",
-      iconBg: "group-hover:bg-cyan-500/15",
-    },
-    {
       label: "Years Active",
       value: githubData?.yearsActive || 0,
       displayValue: githubData ? `${githubData.yearsActive}+` : "...",
@@ -58,10 +50,10 @@ export default function GitHubStats() {
       iconBg: "group-hover:bg-orange-500/15",
     },
     {
-      label: "Followers",
-      value: githubData?.followers || 0,
-      displayValue: githubData ? formatStatValue(githubData.followers) : "...",
-      Icon: GitBranch,
+      label: "Total Forks",
+      value: githubData?.totalForks || 0,
+      displayValue: githubData ? formatStatValue(githubData.totalForks) : "...",
+      Icon: GitFork,
       gradient: "from-green-500 to-emerald-500",
       hoverBorder: "hover:border-green-500/50",
       hoverGlow: "group-hover:shadow-[0_0_60px_rgba(34,197,94,0.2)]",
@@ -71,11 +63,8 @@ export default function GitHubStats() {
     },
   ];
 
-  // Filter out stats with 0 values and sort by value (highest first)
-  const stats = allStats
-    .filter(stat => stat.value > 0)
-    .sort((a, b) => b.value - a.value)
-    .slice(0, 4); // Take top 4
+  // Always show all 4 stats in fixed order (no filtering)
+  const stats = allStats;
 
   const visibleStats = isLoading ? allStats : stats;
 
@@ -114,7 +103,7 @@ export default function GitHubStats() {
         </motion.div>
 
         {/* Stats Grid */}
-        <div className={`grid gap-6 md:gap-8 mb-12 ${visibleStats.length === 4 ? 'grid-cols-2 lg:grid-cols-4' : visibleStats.length === 3 ? 'grid-cols-2 lg:grid-cols-3' : 'grid-cols-2'}`}>
+        <div className="grid gap-6 md:gap-8 mb-12 grid-cols-1 sm:grid-cols-3">
           {visibleStats.map((stat, index) => (
             <motion.div
               key={index}
@@ -160,44 +149,7 @@ export default function GitHubStats() {
           ))}
         </div>
 
-        {/* GitHub Profile Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="relative overflow-hidden bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-cyan-500/10 border border-white/10 rounded-[36px] p-8 md:p-12 backdrop-blur-2xl hover:border-purple-500/30 transition-all duration-500 shadow-[0_0_60px_rgba(168,85,247,0.1)]"
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 pointer-events-none" />
-
-          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="flex items-center gap-6 text-center md:text-left">
-              <div className="w-20 h-20 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center shadow-[0_0_40px_rgba(168,85,247,0.4)] flex-shrink-0">
-                <GitBranch size={40} className="text-white" />
-              </div>
-              <div>
-                <h3 className="text-2xl md:text-3xl font-bold mb-2 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
-                  @lakshay7093
-                </h3>
-                <p className="text-zinc-400 text-base">
-                  Explore my open source contributions
-                </p>
-              </div>
-            </div>
-
-            <motion.a
-              href="https://github.com/lakshay7093"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-3 bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-500 hover:to-pink-400 transition-all duration-300 px-8 py-4 rounded-2xl font-semibold text-base shadow-[0_0_35px_rgba(168,85,247,0.35)] whitespace-nowrap"
-            >
-              <GitBranch size={20} />
-              View GitHub
-            </motion.a>
-          </div>
-        </motion.div>
+        {/* GitHub profile card removed per request */}
       </div>
     </section>
   );

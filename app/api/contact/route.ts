@@ -4,9 +4,13 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-
     const { name, email, subject, message } = body;
 
+    if (!name || !email || !subject || !message) {
+      return NextResponse.json({ error: "All fields are required" }, { status: 400 });
+    }
+
+    // Send emails via nodemailer
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -15,7 +19,7 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // Email to you (portfolio owner)
+    // Email to portfolio owner
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_USER,
@@ -52,18 +56,11 @@ export async function POST(request: NextRequest) {
       `,
     });
 
-    return NextResponse.json({
-      success: true,
-      message: "Email sent successfully",
-    });
+    return NextResponse.json({ success: true, message: "Email sent successfully" });
   } catch (error) {
-    console.log(error);
-
+    console.error("Contact route error:", error);
     return NextResponse.json(
-      {
-        success: false,
-        message: "Failed to send email",
-      },
+      { success: false, message: "Failed to send email" },
       { status: 500 }
     );
   }
