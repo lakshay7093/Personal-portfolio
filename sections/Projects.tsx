@@ -2,11 +2,13 @@
 
 import { motion } from "framer-motion";
 import { Smartphone, Cloud, Layout, FileSpreadsheet } from "lucide-react";
+import Image from "next/image";
 
 const projects = [
   {
     title: "Ninja Deliveries Customer",
     category: "Production Mobile App",
+    image: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=800&auto=format&fit=crop", // Modern shopping & delivery
     description:
       "A scalable food delivery and service booking application with realtime Firebase integration, authentication, responsive UI and optimized performance for real-world users.",
     tech: ["React Native", "Firebase", "Expo", "TypeScript"],
@@ -24,6 +26,7 @@ const projects = [
   {
     title: "Ninja Deliveries Functions",
     category: "Backend Infrastructure",
+    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=800&auto=format&fit=crop", // Cloud & Server backend
     description:
       "Cloud Functions and backend APIs powering realtime notifications, authentication flows and application automation for production systems.",
     tech: ["Firebase Functions", "Node.js", "REST APIs"],
@@ -41,6 +44,7 @@ const projects = [
   {
     title: "Personal Portfolio",
     category: "Full Stack Web Application",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop",
     description:
       "Modern portfolio website built with Next.js 16, featuring dynamic GitHub stats, contact form with email integration, and smooth animations powered by Framer Motion.",
     tech: ["Next.js 16", "React 19", "TypeScript", "Tailwind v4", "Framer Motion"],
@@ -58,6 +62,7 @@ const projects = [
   {
     title: "Insta_Post",
     category: "Frontend UI Project",
+    image: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?q=80&w=800&auto=format&fit=crop",
     description:
       "Modern social-media inspired frontend application focused on responsive layouts, smooth animations and premium user experience.",
     tech: ["React", "Tailwind", "UI/UX"],
@@ -75,6 +80,7 @@ const projects = [
   {
     title: "CSV Excel to PDF Converter",
     category: "Utility Application",
+    image: "https://images.unsplash.com/photo-1568027762272-e4da8b386fe9?q=80&w=800&auto=format&fit=crop",
     description:
       "A productivity-focused utility application for converting CSV and Excel data into clean, structured and downloadable PDF documents.",
     tech: ["React", "PDF", "File Processing"],
@@ -130,7 +136,7 @@ export default function Projects() {
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid sm:grid-cols-2 gap-6 md:gap-10">
+        <div className="grid sm:grid-cols-2 gap-8 md:gap-12">
           {projects.map((project, index) => (
             <motion.div
               key={index}
@@ -138,17 +144,42 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.15 }}
               viewport={{ once: true }}
-              whileHover={{ y: -12, scale: 1.02 }}
-              className={`group relative overflow-hidden bg-white/5 border border-white/10 rounded-[28px] md:rounded-[36px] p-6 md:p-10 backdrop-blur-2xl transition-all duration-500 ${project.hoverBorder} ${project.hoverGlow} shadow-[0_0_50px_rgba(255,255,255,0.03)]`}
+              className={`group relative flex flex-col bg-zinc-900/40 border border-white/10 rounded-[32px] overflow-hidden backdrop-blur-xl transition-all duration-500 ${project.hoverBorder} ${project.hoverGlow}`}
             >
-              {/* Gradient Glow Background */}
-              <div
-                className={`absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br ${project.glowBg} transition-opacity duration-500 pointer-events-none`}
-              />
+              {/* Image Container */}
+              <div className="relative h-64 md:h-72 overflow-hidden">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                {/* Overlay Gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-60" />
+                
+                {/* Featured Badge */}
+                {project.featured && (
+                  <div className="absolute top-6 left-6 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-medium text-white">
+                    Featured Project
+                  </div>
+                )}
 
-              {/* Top Row */}
-              <div className="relative z-10 flex items-start justify-between mb-8 gap-4">
-                <div className="flex items-start gap-5">
+                {/* Status Badge */}
+                <div
+                  className={`absolute top-6 right-6 px-4 py-1.5 rounded-full bg-gradient-to-r ${project.statsBg} text-white font-bold text-[10px] uppercase tracking-wider shadow-xl`}
+                >
+                  {project.stats}
+                </div>
+              </div>
+
+              {/* Content Container */}
+              <div className="p-8 md:p-10 flex flex-col flex-grow relative">
+                {/* Gradient Glow Background */}
+                <div
+                  className={`absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br ${project.glowBg} transition-opacity duration-500 pointer-events-none`}
+                />
+
+                <div className="relative z-10 flex items-start gap-5 mb-6">
                   {/* Icon */}
                   <div
                     className={`w-14 h-14 rounded-2xl flex items-center justify-center bg-white/5 border border-white/10 flex-shrink-0 transition-all duration-500 ${project.iconBg}`}
@@ -160,42 +191,36 @@ export default function Projects() {
                   </div>
 
                   <div>
-                    <p className="text-zinc-500 text-xs uppercase tracking-[0.25em]">
+                    <p className="text-purple-400/80 text-[10px] uppercase tracking-[0.3em] font-bold mb-1">
                       {project.category}
                     </p>
-                    <h3 className="text-2xl md:text-3xl font-bold mt-2 leading-tight">
+                    <h3 className="text-2xl md:text-3xl font-bold leading-tight text-white">
                       {project.title}
                     </h3>
                   </div>
                 </div>
 
-                <div
-                  className={`flex-shrink-0 px-4 py-2 rounded-xl bg-gradient-to-r ${project.statsBg} text-white font-semibold text-xs shadow-lg`}
-                >
-                  {project.stats}
+                {/* Description */}
+                <p className="relative z-10 text-zinc-400 text-base leading-relaxed mb-8 line-clamp-3 group-hover:line-clamp-none transition-all duration-500">
+                  {project.description}
+                </p>
+
+                {/* Tech Stack */}
+                <div className="relative z-10 flex flex-wrap gap-2 mt-auto">
+                  {project.tech.map((item, i) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-[11px] font-medium text-zinc-300 backdrop-blur-xl"
+                    >
+                      {item}
+                    </span>
+                  ))}
                 </div>
               </div>
 
-              {/* Description */}
-              <p className="relative z-10 text-zinc-400 text-base leading-8">
-                {project.description}
-              </p>
-
-              {/* Tech Stack */}
-              <div className="relative z-10 flex flex-wrap gap-3 mt-8">
-                {project.tech.map((item, i) => (
-                  <span
-                    key={i}
-                    className="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm text-zinc-300 backdrop-blur-xl"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-
-              {/* Bottom Line */}
+              {/* Bottom Animated Line */}
               <div
-                className={`relative z-10 w-0 group-hover:w-full h-[2px] bg-gradient-to-r ${project.gradient} transition-all duration-700 mt-10`}
+                className={`absolute bottom-0 left-0 w-0 group-hover:w-full h-[3px] bg-gradient-to-r ${project.gradient} transition-all duration-700`}
               />
             </motion.div>
           ))}
