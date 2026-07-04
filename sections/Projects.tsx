@@ -8,7 +8,7 @@ const projects = [
   {
     title: "Ninja Deliveries Customer",
     category: "Production Mobile App",
-    image: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=800&auto=format&fit=crop", // Modern shopping & delivery
+    image: "/1.png",
     description:
       "A scalable food delivery and service booking application with realtime Firebase integration, authentication, responsive UI and optimized performance for real-world users.",
     tech: ["React Native", "Firebase", "Expo", "TypeScript"],
@@ -26,7 +26,7 @@ const projects = [
   {
     title: "Ninja Deliveries Functions",
     category: "Backend Infrastructure",
-    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=800&auto=format&fit=crop", // Cloud & Server backend
+    image: "/2.png", // Cloud & Server backend
     description:
       "Cloud Functions and backend APIs powering realtime notifications, authentication flows and application automation for production systems.",
     tech: ["Firebase Functions", "Node.js", "REST APIs"],
@@ -62,7 +62,7 @@ const projects = [
   {
     title: "Insta_Post",
     category: "Frontend UI Project",
-    image: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?q=80&w=800&auto=format&fit=crop",
+    image: "/4.png",
     description:
       "Modern social-media inspired frontend application focused on responsive layouts, smooth animations and premium user experience.",
     tech: ["React", "Tailwind", "UI/UX"],
@@ -80,7 +80,7 @@ const projects = [
   {
     title: "CSV Excel to PDF Converter",
     category: "Utility Application",
-    image: "https://images.unsplash.com/photo-1568027762272-e4da8b386fe9?q=80&w=800&auto=format&fit=crop",
+    image: "/3.png",
     description:
       "A productivity-focused utility application for converting CSV and Excel data into clean, structured and downloadable PDF documents.",
     tech: ["React", "PDF", "File Processing"],
@@ -147,23 +147,17 @@ export default function Projects() {
               className={`group relative flex flex-col bg-zinc-900/40 border border-white/10 rounded-[32px] overflow-hidden backdrop-blur-xl transition-all duration-500 ${project.hoverBorder} ${project.hoverGlow}`}
             >
               {/* Image Container */}
-              <div className="relative h-64 md:h-72 overflow-hidden">
+              <div className="relative h-72 sm:h-80 md:h-96 overflow-hidden">
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 {/* Overlay Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-60" />
                 
-                {/* Featured Badge */}
-                {project.featured && (
-                  <div className="absolute top-6 left-6 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-medium text-white">
-                    Featured Project
-                  </div>
-                )}
-
                 {/* Status Badge */}
                 <div
                   className={`absolute top-6 right-6 px-4 py-1.5 rounded-full bg-gradient-to-r ${project.statsBg} text-white font-bold text-[10px] uppercase tracking-wider shadow-xl`}
@@ -197,6 +191,11 @@ export default function Projects() {
                     <h3 className="text-2xl md:text-3xl font-bold leading-tight text-white">
                       {project.title}
                     </h3>
+                    {project.featured && (
+                      <span className="mt-4 inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] uppercase tracking-[0.3em] font-semibold text-purple-300">
+                        Featured Project
+                      </span>
+                    )}
                   </div>
                 </div>
 
