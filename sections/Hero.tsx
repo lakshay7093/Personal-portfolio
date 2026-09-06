@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download, MapPin } from "lucide-react";
 import { useResumeDownload } from "@/lib/useResumeDownload";
 
 export default function Hero() {
@@ -11,39 +11,37 @@ export default function Hero() {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black px-4 sm:px-6 pt-24 pb-16 md:pb-20">
+    <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black px-5 sm:px-8 pt-28 pb-16 md:pb-20">
 
       {/* Background Grid */}
       <div
         className="absolute inset-0 opacity-[0.05]"
         style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
+            backgroundImage:
+            "linear-gradient(rgba(23,32,27,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(23,32,27,0.06) 1px, transparent 1px)",
+          backgroundSize: "72px 72px",
         }}
       />
 
-      {/* Purple Glow */}
-      <div className="absolute top-[-120px] left-[-120px] w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[100px]" />
+      <div className="absolute top-[-180px] right-[10%] w-[520px] h-[520px] bg-purple-500/10 rounded-full blur-[120px]" />
 
-      {/* Pink Glow */}
-      <div className="absolute bottom-[-100px] right-[-100px] w-[450px] h-[450px] bg-pink-500/10 rounded-full blur-[100px]" />
+      <div className="absolute bottom-[-160px] left-[-120px] w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-[120px]" />
 
     
 
       {/* Content */}
-      <div className="relative z-10 max-w-6xl w-full text-center flex-1 flex flex-col items-center justify-center">
+      <div className="relative z-10 max-w-7xl w-full text-center flex-1 flex flex-col items-center justify-center">
 
         {/* Small Top Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-5 py-2 mb-10 backdrop-blur-xl"
+          className="inline-flex items-center gap-3 bg-white/5 border border-white/15 rounded-full px-4 py-2 mb-10 backdrop-blur-xl"
         >
-          <span className="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_8px_#4ade80] animate-pulse" />
-          <span className="text-zinc-400 uppercase tracking-[0.35em] text-xs">
-            Available for Work
+          <span className="w-2 h-2 rounded-full bg-[#65d7ff] shadow-[0_0_12px_#65d7ff] animate-pulse" />
+          <span className="text-zinc-400 uppercase tracking-[0.25em] text-[10px] md:text-xs">
+            Available for select projects
           </span>
         </motion.div>
 
@@ -52,23 +50,23 @@ export default function Hero() {
           initial={{ opacity: 0, y: 80 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="leading-[0.9] tracking-tight"
+          className="leading-[0.88] tracking-[-0.05em]"
         >
-          <span className="text-zinc-500 text-3xl md:text-5xl block mb-5 font-medium">
-            I&apos;m
+          <span className="text-[#a1ada3] text-lg md:text-2xl block mb-7 font-medium tracking-normal">
+            Lakshay Saini <span className="text-[#65d7ff] mx-2">/</span> Full Stack Developer
           </span>
 
           <span className="block text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black text-white">
-            Lakshay 
+            Turning complex ideas
           </span>
 
-          <span className="block text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-cyan-400 mt-2">
-            Saini
+          <span className="block text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-cyan-400 mt-3">
+            into reliable digital products.
           </span>
         </motion.h1>
 
         {/* Typing Animation */}
-        <div className="h-[72px] flex items-center justify-center mt-12">
+        <div className="h-[52px] flex items-center justify-center mt-10">
           <TypeAnimation
             sequence={[
               "Full Stack Developer",
@@ -107,7 +105,7 @@ export default function Hero() {
             wrapper="span"
             speed={50}
             repeat={Infinity}
-            className="text-2xl md:text-4xl font-semibold text-zinc-300 tracking-wide"
+            className="text-lg md:text-2xl font-medium text-[#65d7ff] tracking-wide"
           />
         </div>
 
@@ -116,12 +114,10 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="mt-8 text-zinc-400 max-w-2xl mx-auto text-lg md:text-xl leading-9"
+          className="mt-8 text-zinc-400 max-w-2xl mx-auto text-base md:text-lg leading-8"
         >
-          Building scalable web and mobile applications with
-          modern technologies like React, Next.js, Firebase,
-          Node.js and TypeScript — focused on performance,
-          clean architecture and premium user experiences.
+          I design and ship thoughtful digital products across web and mobile,
+          balancing clean engineering with interfaces people actually enjoy using.
         </motion.p>
 
         {/* Buttons */}
@@ -129,11 +125,11 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
-          className="mt-14 flex flex-wrap gap-6 justify-center"
+          className="mt-12 flex flex-wrap gap-4 justify-center"
         >
           <button
             onClick={() => scrollTo("projects")}
-            className="flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-500 hover:opacity-90 transition-all duration-300 px-7 sm:px-10 py-3.5 sm:py-4 rounded-2xl font-semibold text-base sm:text-lg shadow-[0_0_40px_rgba(168,85,247,0.4)] hover:scale-105"
+            className="flex items-center gap-3 bg-[#65d7ff] hover:bg-[#eef3f8] transition-all duration-300 px-7 sm:px-9 py-3.5 sm:py-4 rounded-xl font-semibold text-base sm:text-lg text-[#0b1018]"
           >
             View Projects
             <ArrowRight size={18} />
@@ -142,11 +138,22 @@ export default function Hero() {
           <a
             href="/resume.pdf"
             onClick={handleResumeDownload}
-            className="flex items-center gap-2 border border-white/10 hover:border-purple-500 bg-white/5 backdrop-blur-xl transition-all duration-300 px-7 sm:px-10 py-3.5 sm:py-4 rounded-2xl text-base sm:text-lg hover:scale-105"
+            className="flex items-center gap-3 border border-white/15 hover:border-[#65d7ff] bg-white/5 backdrop-blur-xl transition-all duration-300 px-7 sm:px-9 py-3.5 sm:py-4 rounded-xl text-base sm:text-lg"
           >
             <Download size={18} />
             Download Resume
           </a>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.1 }}
+          className="mt-16 flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-zinc-600"
+        >
+          <MapPin size={13} className="text-[#65d7ff]" />
+          Himachal Pradesh, India
+          <ArrowRight size={13} className="ml-2 rotate-90" />
         </motion.div>
       </div>
     </section>

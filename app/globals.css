@@ -1,13 +1,135 @@
 @import "tailwindcss";
 
+:root {
+  --ink: #0b1018;
+  --ink-soft: #151d29;
+  --paper: #eef3f8;
+  --muted: #93a1b2;
+  --line: rgba(238, 243, 248, 0.14);
+  --acid: #65d7ff;
+  --coral: #ff9f68;
+  --sky: #a7b8ff;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background: black;
-  color: white;
+  background: var(--ink);
+  color: var(--paper);
   overflow-x: hidden;
+  font-family: var(--font-geist-sans), sans-serif;
+}
+
+::selection {
+  background: var(--acid);
+  color: var(--ink);
+}
+
+/* Re-map the original utility palette so every section shares one art direction. */
+.bg-black {
+  background-color: var(--ink) !important;
+}
+
+.text-white {
+  color: var(--paper) !important;
+}
+
+.text-purple-400,
+.text-purple-300 {
+  color: var(--acid) !important;
+}
+
+.text-pink-400,
+.text-pink-500 {
+  color: var(--coral) !important;
+}
+
+.text-cyan-400,
+.text-cyan-300 {
+  color: var(--sky) !important;
+}
+
+[class*="from-purple-"] {
+  --tw-gradient-from: var(--acid) !important;
+  --tw-gradient-to: rgb(215 243 107 / 0) !important;
+}
+
+[class*="via-pink-"] {
+  --tw-gradient-via: var(--coral) !important;
+}
+
+[class*="to-pink-"] {
+  --tw-gradient-to: var(--coral) !important;
+}
+
+[class*="to-cyan-"] {
+  --tw-gradient-to: var(--sky) !important;
+}
+
+[class*="from-pink-"] {
+  --tw-gradient-from: var(--coral) !important;
+  --tw-gradient-to: rgb(255 118 92 / 0) !important;
+}
+
+[class*="from-cyan-"] {
+  --tw-gradient-from: var(--sky) !important;
+  --tw-gradient-to: rgb(158 216 210 / 0) !important;
+}
+
+[class*="bg-purple-"] {
+  background-color: rgb(101 215 255 / 0.12) !important;
+}
+
+[class*="bg-pink-"] {
+  background-color: rgb(255 159 104 / 0.12) !important;
+}
+
+[class*="bg-cyan-"] {
+  background-color: rgb(167 184 255 / 0.1) !important;
+}
+
+[class~="bg-white/5"] {
+  background-color: rgb(238 243 248 / 0.055) !important;
+}
+
+[class~="bg-white/10"] {
+  background-color: rgb(238 243 248 / 0.1) !important;
+}
+
+[class~="border-white/10"],
+[class~="border-white/15"] {
+  border-color: var(--line) !important;
+}
+
+.text-zinc-200,
+.text-zinc-300 {
+  color: #dce6ef !important;
+}
+
+.text-zinc-400,
+.text-zinc-500 {
+  color: var(--muted) !important;
+}
+
+.text-zinc-600 {
+  color: #68788c !important;
+}
+
+button,
+a,
+input,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--acid);
+  outline-offset: 4px;
 }
 
 /* Scrollbar */
@@ -17,10 +139,10 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: black;
+  background: var(--ink);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #7c3aed;
+  background: var(--acid);
   border-radius: 999px;
 }

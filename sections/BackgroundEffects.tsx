@@ -73,16 +73,16 @@ export default function BackgroundEffects() {
   if (!shouldUseHeavyMotion) {
     return (
       <div className="fixed inset-0 -z-10 overflow-hidden bg-black">
-        <div className="absolute inset-0 opacity-25 bg-[radial-gradient(circle_at_20%_20%,rgba(168,85,247,0.16),transparent_34%),radial-gradient(circle_at_80%_25%,rgba(236,72,153,0.12),transparent_32%),radial-gradient(circle_at_50%_85%,rgba(6,182,212,0.12),transparent_36%)]" />
+        <div className="absolute inset-0 opacity-25 bg-[radial-gradient(circle_at_20%_20%,rgba(215,243,107,0.14),transparent_34%),radial-gradient(circle_at_80%_25%,rgba(240,138,99,0.12),transparent_32%),radial-gradient(circle_at_50%_85%,rgba(138,199,189,0.1),transparent_36%)]" />
         <div
           className="absolute inset-0 opacity-[0.035]"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(168, 85, 247, 0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(168, 85, 247, 0.12) 1px, transparent 1px)",
+              "linear-gradient(rgba(215, 243, 107, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(215, 243, 107, 0.08) 1px, transparent 1px)",
             backgroundSize: "60px 60px",
           }}
         />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,black_90%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#0b1018_90%)]" />
       </div>
     );
   }
@@ -95,10 +95,10 @@ export default function BackgroundEffects() {
         <motion.div
           animate={{
             background: [
-              "radial-gradient(circle at 20% 50%, rgba(168, 85, 247, 0.15) 0%, transparent 50%)",
-              "radial-gradient(circle at 80% 50%, rgba(236, 72, 153, 0.15) 0%, transparent 50%)",
-              "radial-gradient(circle at 50% 80%, rgba(6, 182, 212, 0.15) 0%, transparent 50%)",
-              "radial-gradient(circle at 20% 50%, rgba(168, 85, 247, 0.15) 0%, transparent 50%)",
+              "radial-gradient(circle at 20% 50%, rgba(215, 243, 107, 0.12) 0%, transparent 50%)",
+              "radial-gradient(circle at 80% 50%, rgba(240, 138, 99, 0.12) 0%, transparent 50%)",
+              "radial-gradient(circle at 50% 80%, rgba(138, 199, 189, 0.1) 0%, transparent 50%)",
+              "radial-gradient(circle at 20% 50%, rgba(215, 243, 107, 0.12) 0%, transparent 50%)",
             ],
           }}
           transition={{
@@ -150,7 +150,7 @@ export default function BackgroundEffects() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute top-[-100px] left-[-100px] w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[100px]"
+          className="absolute top-[-100px] left-[-100px] w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[100px]"
       />
 
       {/* Pink Glow */}
@@ -264,7 +264,7 @@ export default function BackgroundEffects() {
       </div>
 
       {/* Radial Overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,black_90%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#0b1018_90%)]" />
     </div>
   );
 }

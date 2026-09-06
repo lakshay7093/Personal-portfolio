@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Smartphone, Cloud, Layout, FileSpreadsheet } from "lucide-react";
+import { BadgeCheck, Monitor, Smartphone } from "lucide-react";
 import Image from "next/image";
 
 const projects = [
@@ -10,8 +10,9 @@ const projects = [
     category: "Production Mobile App",
     image: "/1.png",
     description:
-      "A scalable food delivery and service booking application with realtime Firebase integration, authentication, responsive UI and optimized performance for real-world users.",
-    tech: ["React Native", "Firebase", "Expo", "TypeScript"],
+      "Production-level food delivery and service booking application with realtime workflows, push notifications, order tracking and secure payments.",
+    tech: ["React Native", "Firebase", "Node.js", "Razorpay"],
+    href: "https://github.com/lakshay7093",
     gradient: "from-purple-500 to-pink-500",
     hoverBorder: "hover:border-purple-500/50",
     hoverGlow: "group-hover:shadow-[0_0_60px_rgba(168,85,247,0.2)]",
@@ -24,76 +25,42 @@ const projects = [
     featured: true,
   },
   {
-    title: "Ninja Deliveries Functions",
-    category: "Backend Infrastructure",
-    image: "/2.png", // Cloud & Server backend
+    title: "SkillCert AI",
+    category: "Skill Assessment Platform",
+    image: "https://skillcert-ai.vercel.app/web-app-manifest-512x512.png",
     description:
-      "Cloud Functions and backend APIs powering realtime notifications, authentication flows and application automation for production systems.",
-    tech: ["Firebase Functions", "Node.js", "REST APIs"],
+      "Live AI-powered assessment platform where developers test their skills, receive instant feedback, and earn downloadable certificates with secure verification.",
+    tech: ["Next.js", "TypeScript", "Prisma", "MySQL", "Firebase"],
+    href: "https://skillcert-ai.vercel.app/",
     gradient: "from-cyan-500 to-blue-500",
     hoverBorder: "hover:border-cyan-500/50",
     hoverGlow: "group-hover:shadow-[0_0_60px_rgba(6,182,212,0.2)]",
     glowBg: "from-cyan-500/10 to-blue-500/5",
     statsBg: "from-cyan-500 to-blue-500",
-    stats: "Realtime Backend",
-    Icon: Cloud,
+    stats: "Live Project",
+    Icon: BadgeCheck,
     iconColor: "group-hover:text-cyan-400",
     iconBg: "group-hover:bg-cyan-500/15",
     featured: true,
   },
   {
-    title: "Personal Portfolio",
+    title: "Personal Portfolio Website",
     category: "Full Stack Web Application",
     image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop",
     description:
-      "Modern portfolio website built with Next.js 16, featuring dynamic GitHub stats, contact form with email integration, and smooth animations powered by Framer Motion.",
-    tech: ["Next.js 16", "React 19", "TypeScript", "Tailwind v4", "Framer Motion"],
+      "Responsive portfolio website showcasing projects, technical skills and achievements with SEO, GitHub integration, contact form and performance-focused UI.",
+    tech: ["Next.js", "React.js", "Tailwind CSS"],
+    href: "https://lakshaysaini.vercel.app",
     gradient: "from-indigo-500 to-purple-500",
     hoverBorder: "hover:border-indigo-500/50",
     hoverGlow: "group-hover:shadow-[0_0_60px_rgba(99,102,241,0.2)]",
     glowBg: "from-indigo-500/10 to-purple-500/5",
     statsBg: "from-indigo-500 to-purple-500",
     stats: "Live Portfolio",
-    Icon: Layout,
+    Icon: Monitor,
     iconColor: "group-hover:text-indigo-400",
     iconBg: "group-hover:bg-indigo-500/15",
     featured: true,
-  },
-  {
-    title: "Insta_Post",
-    category: "Frontend UI Project",
-    image: "/4.png",
-    description:
-      "Modern social-media inspired frontend application focused on responsive layouts, smooth animations and premium user experience.",
-    tech: ["React", "Tailwind", "UI/UX"],
-    gradient: "from-pink-500 to-orange-500",
-    hoverBorder: "hover:border-pink-500/50",
-    hoverGlow: "group-hover:shadow-[0_0_60px_rgba(236,72,153,0.2)]",
-    glowBg: "from-pink-500/10 to-orange-500/5",
-    statsBg: "from-pink-500 to-orange-500",
-    stats: "Modern Interface",
-    Icon: Layout,
-    iconColor: "group-hover:text-pink-400",
-    iconBg: "group-hover:bg-pink-500/15",
-    featured: false,
-  },
-  {
-    title: "CSV Excel to PDF Converter",
-    category: "Utility Application",
-    image: "/3.png",
-    description:
-      "A productivity-focused utility application for converting CSV and Excel data into clean, structured and downloadable PDF documents.",
-    tech: ["React", "PDF", "File Processing"],
-    gradient: "from-green-500 to-emerald-500",
-    hoverBorder: "hover:border-green-500/50",
-    hoverGlow: "group-hover:shadow-[0_0_60px_rgba(34,197,94,0.2)]",
-    glowBg: "from-green-500/10 to-emerald-500/5",
-    statsBg: "from-green-500 to-emerald-500",
-    stats: "Document Automation",
-    Icon: FileSpreadsheet,
-    iconColor: "group-hover:text-green-400",
-    iconBg: "group-hover:bg-green-500/15",
-    featured: false,
   },
 ];
 
@@ -136,24 +103,28 @@ export default function Projects() {
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid sm:grid-cols-2 gap-8 md:gap-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
           {projects.map((project, index) => (
-            <motion.div
+            <motion.a
               key={index}
+              href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 80 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.15 }}
               viewport={{ once: true }}
-              className={`group relative flex flex-col bg-zinc-900/40 border border-white/10 rounded-[32px] overflow-hidden backdrop-blur-xl transition-all duration-500 ${project.hoverBorder} ${project.hoverGlow}`}
+              className={`group relative flex min-h-[610px] flex-col bg-[#151d29] border border-white/15 rounded-[24px] overflow-hidden backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-white/30 shadow-[0_24px_70px_rgba(0,0,0,0.28)] ${project.hoverBorder} ${project.hoverGlow}`}
             >
               {/* Image Container */}
-              <div className="relative h-72 sm:h-80 md:h-96 overflow-hidden">
+              <div className="relative h-60 sm:h-64 md:h-72 overflow-hidden">
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
+                  unoptimized={project.title === "SkillCert AI"}
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  className={`${project.title === "SkillCert AI" ? "object-contain bg-[radial-gradient(circle_at_center,#242052_0%,#080b1c_72%)] p-14" : "object-cover"} transition-transform duration-700 group-hover:scale-110`}
                 />
                 {/* Overlay Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-60" />
@@ -179,7 +150,9 @@ export default function Projects() {
                     className={`w-14 h-14 rounded-2xl flex items-center justify-center bg-white/5 border border-white/10 flex-shrink-0 transition-all duration-500 ${project.iconBg}`}
                   >
                     <project.Icon
-                      size={26}
+                      size={28}
+                      strokeWidth={1.8}
+                      aria-hidden="true"
                       className={`text-zinc-400 transition-colors duration-300 ${project.iconColor}`}
                     />
                   </div>
@@ -221,7 +194,7 @@ export default function Projects() {
               <div
                 className={`absolute bottom-0 left-0 w-0 group-hover:w-full h-[3px] bg-gradient-to-r ${project.gradient} transition-all duration-700`}
               />
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>

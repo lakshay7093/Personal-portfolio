@@ -6,7 +6,7 @@ import { Trophy, Award, Target, Zap, Code, Users } from "lucide-react";
 const achievements = [
   {
     title: "Academic Excellence",
-    description: "Maintained CGPA of 8.10 in BCA and 8.0 in MCA, demonstrating consistent academic performance.",
+    description: "Completed MCA with a CGPA of 8.34 after earning 8.10 in BCA, demonstrating consistent academic performance.",
     Icon: Award,
     gradient: "from-purple-500 to-pink-500",
     hoverBorder: "hover:border-purple-500/50",

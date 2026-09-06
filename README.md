@@ -92,6 +92,10 @@ RESEND_API_KEY=your-resend-api-key
 CONTACT_EMAIL=lakshaysaini181@gmail.com
 ```
 
+For Gmail, `SMTP_PASS` must be a 16-character Google App Password, not the
+normal Gmail account password. The contact API also accepts the legacy
+`EMAIL_USER` and `EMAIL_PASS` names as fallbacks.
+
 4. **Run development server**
 ```bash
 npm run dev

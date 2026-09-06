@@ -4,7 +4,7 @@ import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
 import {
-  FolderGit2, GraduationCap, Layers, Database,
+  FolderGit2, GraduationCap, Database,
   ArrowRight, Download, Briefcase, BookOpen,
   CheckCircle2, Building2, Calendar,
 } from "lucide-react";
@@ -14,8 +14,8 @@ import { useResumeDownload } from "@/lib/useResumeDownload";
 const stats = [
   { value: "15+",    title: "Projects Built",     Icon: FolderGit2,    color: "text-purple-400", hoverBorder: "hover:border-purple-500/40", hoverGlow: "group-hover:shadow-[0_0_40px_rgba(168,85,247,0.2)]", glowBg: "from-purple-500/15 to-pink-500/5",   iconBg: "group-hover:bg-purple-500/15", lineGradient: "from-purple-500 to-pink-500" },
   { value: "2+",     title: "Years Experience",   Icon: GraduationCap, color: "text-pink-400",   hoverBorder: "hover:border-pink-500/40",   hoverGlow: "group-hover:shadow-[0_0_40px_rgba(236,72,153,0.2)]", glowBg: "from-pink-500/15 to-orange-500/5",  iconBg: "group-hover:bg-pink-500/15",   lineGradient: "from-pink-500 to-orange-500" },
-  { value: "12+",    title: "Tech Stack",         Icon: Layers,        color: "text-cyan-400",   hoverBorder: "hover:border-cyan-500/40",   hoverGlow: "group-hover:shadow-[0_0_40px_rgba(34,211,238,0.2)]", glowBg: "from-cyan-500/15 to-blue-500/5",    iconBg: "group-hover:bg-cyan-500/15",   lineGradient: "from-cyan-500 to-blue-500" },
-  { value: "100+",   title: "GitHub Commits",     Icon: Database,      color: "text-orange-400", hoverBorder: "hover:border-orange-500/40", hoverGlow: "group-hover:shadow-[0_0_40px_rgba(251,146,60,0.2)]", glowBg: "from-orange-500/15 to-yellow-500/5",iconBg: "group-hover:bg-orange-500/15", lineGradient: "from-orange-500 to-yellow-400" },
+  { value: "8.34",   title: "MCA CGPA",           Icon: GraduationCap, color: "text-cyan-400",   hoverBorder: "hover:border-cyan-500/40",   hoverGlow: "group-hover:shadow-[0_0_40px_rgba(34,211,238,0.2)]", glowBg: "from-cyan-500/15 to-blue-500/5",    iconBg: "group-hover:bg-cyan-500/15",   lineGradient: "from-cyan-500 to-blue-500" },
+  { value: "3",      title: "Featured Products", Icon: Database,      color: "text-orange-400", hoverBorder: "hover:border-orange-500/40", hoverGlow: "group-hover:shadow-[0_0_40px_rgba(251,146,60,0.2)]", glowBg: "from-orange-500/15 to-yellow-500/5",iconBg: "group-hover:bg-orange-500/15", lineGradient: "from-orange-500 to-yellow-400" },
 ];
 
 // ─── Technologies ─────────────────────────────────────────────────────────────
@@ -30,13 +30,13 @@ const technologies = [
 
 // ─── Resume data ──────────────────────────────────────────────────────────────
 const education = [
-  { degree: "Master of Computer Applications (MCA)", institution: "Government PG College, Dharamshala", duration: "2024 – 2026", status: "Pursuing", grade: "CGPA: 8.0",           gradient: "from-purple-500 to-pink-500", hoverBorder: "hover:border-purple-500/50", hoverGlow: "group-hover:shadow-[0_0_60px_rgba(168,85,247,0.2)]", glowBg: "from-purple-500/10 to-pink-500/5",  statsBg: "from-purple-500 to-pink-500", iconColor: "group-hover:text-purple-400", iconBg: "group-hover:bg-purple-500/15", statusColor: "text-yellow-400 border-yellow-500/30 bg-yellow-500/10" },
-  { degree: "Bachelor of Computer Applications (BCA)", institution: "Himachal Pradesh University, Shimla", duration: "2021 – 2024", status: "Completed", grade: "CGPA: 8.10 | O+", gradient: "from-cyan-500 to-blue-500",   hoverBorder: "hover:border-cyan-500/50",   hoverGlow: "group-hover:shadow-[0_0_60px_rgba(6,182,212,0.2)]",   glowBg: "from-cyan-500/10 to-blue-500/5",    statsBg: "from-cyan-500 to-blue-500",   iconColor: "group-hover:text-cyan-400",   iconBg: "group-hover:bg-cyan-500/15",   statusColor: "text-green-400 border-green-500/30 bg-green-500/10" },
+  { degree: "Master of Computer Applications (MCA)", institution: "Government PG College, Dharamshala", duration: "2024 – 2026", status: "Completed", grade: "CGPA: 8.34",           gradient: "from-purple-500 to-pink-500", hoverBorder: "hover:border-purple-500/50", hoverGlow: "group-hover:shadow-[0_0_60px_rgba(168,85,247,0.2)]", glowBg: "from-purple-500/10 to-pink-500/5",  statsBg: "from-purple-500 to-pink-500", iconColor: "group-hover:text-purple-400", iconBg: "group-hover:bg-purple-500/15", statusColor: "text-green-400 border-green-500/30 bg-green-500/10" },
+  { degree: "Bachelor of Computer Applications (BCA)", institution: "MCM DAV College, Kangra", duration: "2021 – 2024", status: "Completed", grade: "CGPA: 8.10", gradient: "from-cyan-500 to-blue-500",   hoverBorder: "hover:border-cyan-500/50",   hoverGlow: "group-hover:shadow-[0_0_60px_rgba(6,182,212,0.2)]",   glowBg: "from-cyan-500/10 to-blue-500/5",    statsBg: "from-cyan-500 to-blue-500",   iconColor: "group-hover:text-cyan-400",   iconBg: "group-hover:bg-cyan-500/15",   statusColor: "text-green-400 border-green-500/30 bg-green-500/10" },
 ];
 
 const experience = [
-  { role: "IT & Software Developer Intern", company: "Ninja Deliveries", duration: "Jan 2026 – Present", type: "Internship", points: ["Developed Services Module — electrician, plumber, salon, car wash, and more.", "Built and enhanced Food Delivery Feature for real users.", "Improved application performance and reduced load time by ~30%.", "Integrated Firebase — Authentication, Firestore, and backend services.", "Implemented real-time data handling and optimized app responsiveness.", "Collaborated in agile team workflows and feature deployments."], techStack: ["React Native", "Firebase", "Expo CLI", "Node.js", "TypeScript", "Postman"], gradient: "from-pink-500 to-orange-500", hoverBorder: "hover:border-pink-500/50", hoverGlow: "group-hover:shadow-[0_0_60px_rgba(236,72,153,0.2)]", glowBg: "from-pink-500/10 to-orange-500/5", statsBg: "from-pink-500 to-orange-500", iconColor: "group-hover:text-pink-400", iconBg: "group-hover:bg-pink-500/15" },
-  { role: "Software Development Trainee", company: "Ninja Deliveries", duration: "3 Months Training", type: "Training", points: ["Learned real-world full-stack development using React and Firebase.", "Gained hands-on experience with APIs, UI development, and backend integration.", "Worked with Git/GitHub and debugging techniques in a collaborative setup."], techStack: ["React", "Firebase", "Git", "GitHub", "REST APIs"], gradient: "from-green-500 to-emerald-500", hoverBorder: "hover:border-green-500/50", hoverGlow: "group-hover:shadow-[0_0_60px_rgba(34,197,94,0.2)]", glowBg: "from-green-500/10 to-emerald-500/5", statsBg: "from-green-500 to-emerald-500", iconColor: "group-hover:text-green-400", iconBg: "group-hover:bg-green-500/15" },
+  { role: "Full Stack Developer Intern", company: "Ninja Deliveries", duration: "Jan 2026 – Jun 2026", type: "Internship", points: ["Developed production-ready food delivery and service booking modules using React Native.", "Integrated Firebase Authentication, Firestore, Cloud Functions, REST APIs, and Razorpay.", "Implemented real-time notifications, order tracking, responsive interfaces, and performance improvements."], techStack: ["React Native", "Firebase", "Node.js", "Razorpay", "REST APIs"], gradient: "from-pink-500 to-orange-500", hoverBorder: "hover:border-pink-500/50", hoverGlow: "group-hover:shadow-[0_0_60px_rgba(236,72,153,0.2)]", glowBg: "from-pink-500/10 to-orange-500/5", statsBg: "from-pink-500 to-orange-500", iconColor: "group-hover:text-pink-400", iconBg: "group-hover:bg-pink-500/15" },
+  { role: "Software Development Trainee", company: "Ninja Deliveries", duration: "Oct 2025 – Dec 2025", type: "Training", points: ["Worked with React, Firebase, REST APIs, and Git in a collaborative development environment.", "Assisted in debugging, feature implementation, and code optimization following industry best practices."], techStack: ["React", "Firebase", "Git", "REST APIs"], gradient: "from-green-500 to-emerald-500", hoverBorder: "hover:border-green-500/50", hoverGlow: "group-hover:shadow-[0_0_60px_rgba(34,197,94,0.2)]", glowBg: "from-green-500/10 to-emerald-500/5", statsBg: "from-green-500 to-emerald-500", iconColor: "group-hover:text-green-400", iconBg: "group-hover:bg-green-500/15" },
 ];
 
 const certificates = [
@@ -172,13 +172,10 @@ export default function About() {
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-cyan-400 mt-2">Digital Experiences</span>
             </h2>
             <p className="text-zinc-400 mt-8 text-base md:text-lg leading-9">
-              I&apos;m a passionate Full Stack Developer with 2+ years of experience, specializing in building scalable web and mobile applications. 
-              Currently pursuing my Master of Computer Applications (MCA) at Government PG College, Dharamshala, I combine academic excellence with real-world development expertise.
+              I&apos;m a Full Stack Developer focused on scalable web and mobile applications using React.js, Next.js, React Native, Node.js, Firebase, Prisma ORM, and MySQL. I recently completed my Master of Computer Applications with a CGPA of 8.34.
             </p>
             <p className="text-zinc-500 mt-4 text-sm md:text-base leading-8">
-              My journey includes hands-on experience as an IT & Software Developer Intern at Ninja Deliveries, where I&apos;ve developed comprehensive service modules, 
-              enhanced food delivery features, and optimized application performance by ~30%. I specialize in React, React Native, Next.js, Firebase, Node.js, and TypeScript, 
-              with a strong focus on creating premium user experiences and scalable solutions.
+              At Ninja Deliveries, I worked on production-ready food delivery and service booking modules, real-time notifications, order tracking, Firebase services, REST APIs, and Razorpay integration. I care about clean architecture, responsive interfaces, and software that feels dependable.
             </p>
             <div className="flex flex-wrap gap-3 md:gap-4 mt-10">
               <button onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })} className="flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-500 hover:opacity-90 transition-all duration-300 px-6 md:px-8 py-3.5 md:py-4 rounded-2xl font-semibold text-sm md:text-base shadow-[0_0_35px_rgba(168,85,247,0.35)] hover:scale-105">

@@ -16,7 +16,7 @@ import { useResumeDownload } from "@/lib/useResumeDownload";
 // ─────────────────────────────────────────────────────────────────────────────
 
 const profileSummary =
-  "Full Stack Developer with hands-on experience in building scalable web and mobile applications using React, Node.js, and Firebase. Contributed to a live production app used by 1,000+ users, with a focus on performance optimization, clean architecture, and user-centric design.";
+  "Results-oriented Full Stack Developer with hands-on experience building scalable web and mobile applications using React.js, Next.js, React Native, Node.js, Firebase, Prisma ORM, and MySQL. MCA graduate with a CGPA of 8.34, focused on efficient, user-centric software.";
 
 const education = [
   {
@@ -24,8 +24,8 @@ const education = [
     institution: "Government PG College, Dharamshala",
     university: "Himachal Pradesh Technical University",
     duration: "2024 – 2026",
-    status: "Pursuing",
-    grade: "CGPA: 8.0",
+    status: "Completed",
+    grade: "CGPA: 8.34",
     gradient: "from-purple-500 to-pink-500",
     hoverBorder: "hover:border-purple-500/50",
     hoverGlow: "group-hover:shadow-[0_0_60px_rgba(168,85,247,0.2)]",
@@ -37,7 +37,7 @@ const education = [
   },
   {
     degree: "Bachelor of Computer Applications (BCA)",
-    institution: "Himachal Pradesh University, Shimla",
+    institution: "MCM DAV College, Kangra",
     university: "Himachal Pradesh University",
     duration: "2021 – 2024",
     status: "Completed",
@@ -55,17 +55,14 @@ const education = [
 
 const experience = [
   {
-    role: "IT & Software Developer Intern",
+    role: "Full Stack Developer Intern",
     company: "Ninja Deliveries",
-    duration: "Jan 2026 – Present",
+    duration: "Jan 2026 – Jun 2026",
     type: "Internship",
     points: [
-      "Developed Services Module — electrician, plumber, salon, car wash, and more.",
-      "Built and enhanced Food Delivery Feature for real users.",
-      "Improved application performance and reduced load time by ~30%.",
-      "Integrated Firebase — Authentication, Firestore, and backend services.",
-      "Implemented real-time data handling and optimized app responsiveness.",
-      "Collaborated in agile team workflows and feature deployments.",
+      "Developed production-ready food delivery and service booking modules using React Native.",
+      "Integrated Firebase Authentication, Firestore, Cloud Functions, REST APIs, and Razorpay.",
+      "Implemented real-time notifications, order tracking, responsive interfaces, and performance improvements.",
     ],
     techStack: ["React Native", "Firebase", "Expo CLI", "Node.js", "TypeScript", "Postman"],
     gradient: "from-pink-500 to-orange-500",
@@ -79,12 +76,11 @@ const experience = [
   {
     role: "Software Development Trainee",
     company: "Ninja Deliveries",
-    duration: "3 Months Training",
+    duration: "Oct 2025 – Dec 2025",
     type: "Training",
     points: [
-      "Learned real-world full-stack development using React and Firebase.",
-      "Gained hands-on experience with APIs, UI development, and backend integration.",
-      "Worked with Git/GitHub and debugging techniques in a collaborative setup.",
+      "Worked with React, Firebase, REST APIs, and Git in a collaborative development environment.",
+      "Assisted in debugging, feature implementation, and code optimization following industry best practices.",
     ],
     techStack: ["React", "Firebase", "Git", "GitHub", "REST APIs"],
     gradient: "from-green-500 to-emerald-500",
@@ -97,49 +93,25 @@ const experience = [
   },
 ];
 
+const certificateTheme = {
+  gradient: "from-purple-500 to-pink-500",
+  hoverBorder: "hover:border-purple-500/50",
+  hoverGlow: "group-hover:shadow-[0_0_60px_rgba(168,85,247,0.2)]",
+  glowBg: "from-purple-500/10 to-pink-500/5",
+  statsBg: "from-purple-500 to-pink-500",
+  iconColor: "group-hover:text-purple-400",
+  iconBg: "group-hover:bg-purple-500/15",
+};
+
 const certificates = [
-  {
-    title: "Training – Ninja Deliveries",
-    issuer: "Ninja Deliveries",
-    year: "2025",
-    description:
-      "Hands-on training in real-world full-stack development — React, Firebase, APIs, UI development, backend integration, Git/GitHub and collaborative debugging.",
-    gradient: "from-purple-500 to-pink-500",
-    hoverBorder: "hover:border-purple-500/50",
-    hoverGlow: "group-hover:shadow-[0_0_60px_rgba(168,85,247,0.2)]",
-    glowBg: "from-purple-500/10 to-pink-500/5",
-    statsBg: "from-purple-500 to-pink-500",
-    iconColor: "group-hover:text-purple-400",
-    iconBg: "group-hover:bg-purple-500/15",
-  },
-  {
-    title: "Workshop on Cyber Security & IT Fundamentals",
-    issuer: "Workshop",
-    year: "2023",
-    description:
-      "Attended workshop covering cybersecurity principles, IT fundamentals, network security and best practices for secure software development.",
-    gradient: "from-cyan-500 to-blue-500",
-    hoverBorder: "hover:border-cyan-500/50",
-    hoverGlow: "group-hover:shadow-[0_0_60px_rgba(6,182,212,0.2)]",
-    glowBg: "from-cyan-500/10 to-blue-500/5",
-    statsBg: "from-cyan-500 to-blue-500",
-    iconColor: "group-hover:text-cyan-400",
-    iconBg: "group-hover:bg-cyan-500/15",
-  },
-  {
-    title: "Workshops on AI, Blockchain & Cloud Computing",
-    issuer: "Workshop",
-    year: "2024",
-    description:
-      "Participated in workshops on Artificial Intelligence, Blockchain technology and Cloud Computing — exploring emerging tech trends and their real-world applications.",
-    gradient: "from-orange-500 to-yellow-400",
-    hoverBorder: "hover:border-orange-500/50",
-    hoverGlow: "group-hover:shadow-[0_0_60px_rgba(251,146,60,0.2)]",
-    glowBg: "from-orange-500/10 to-yellow-400/5",
-    statsBg: "from-orange-500 to-yellow-400",
-    iconColor: "group-hover:text-orange-400",
-    iconBg: "group-hover:bg-orange-500/15",
-  },
+  { ...certificateTheme, title: "Software Development Internship", issuer: "Ninja Deliveries", year: "2026", description: "Production experience across React Native, Firebase, REST APIs, real-time workflows, and mobile product development.", href: "https://github.com/lakshay7093" },
+  { ...certificateTheme, title: "JavaScript Certificate", issuer: "OneRoadmap", year: "2025", description: "Verified JavaScript learning covering core language concepts and practical development foundations.", href: "https://oneroadmap.io/" },
+  { ...certificateTheme, title: "Node.js Certificate", issuer: "OneRoadmap", year: "2025", description: "Backend development fundamentals with Node.js and server-side JavaScript.", href: "https://oneroadmap.io/" },
+  { ...certificateTheme, title: "React.js Certificate", issuer: "OneRoadmap", year: "2025", description: "React fundamentals for building component-driven, interactive interfaces.", href: "https://oneroadmap.io/" },
+  { ...certificateTheme, title: "CSS Certificate", issuer: "OneRoadmap", year: "2025", description: "Modern CSS foundations for responsive and accessible interface development.", href: "https://oneroadmap.io/" },
+  { ...certificateTheme, title: "SQL Certificate", issuer: "OneRoadmap", year: "2025", description: "SQL and relational database fundamentals for working with structured application data.", href: "https://oneroadmap.io/" },
+  { ...certificateTheme, title: "AI & Data Science Certificate", issuer: "OneRoadmap", year: "2025", description: "Foundations of AI and data science concepts with practical problem-solving applications.", href: "https://oneroadmap.io/" },
+  { ...certificateTheme, title: "GenAI Powered Data Analytics Job Simulation", issuer: "Tata Forage", year: "2025", description: "Job simulation focused on applying generative AI to data analytics workflows.", href: "https://www.theforage.com/" },
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -386,8 +358,11 @@ export default function AboutPage() {
 
             <div className="grid lg:grid-cols-3 gap-8">
               {certificates.map((cert, index) => (
-                <motion.div
+                <motion.a
                   key={index}
+                  href={cert.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   initial={{ opacity: 0, y: 60 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: index * 0.12 }}
@@ -416,7 +391,7 @@ export default function AboutPage() {
                   <p className="relative z-10 text-zinc-400 text-base leading-8">{cert.description}</p>
 
                   <div className={`relative z-10 w-0 group-hover:w-full h-[2px] bg-gradient-to-r ${cert.gradient} transition-all duration-700 mt-10`} />
-                </motion.div>
+                </motion.a>
               ))}
             </div>
           </div>

@@ -53,25 +53,25 @@ export default function Navbar() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="fixed top-0 left-0 right-0 w-full z-[10000]"
+        className="fixed top-0 left-0 right-0 w-full z-[10000] bg-[#0b1018] border-b border-white/10 shadow-[0_12px_32px_rgba(0,0,0,0.34)]"
       >
-        <div className={`absolute inset-0 transition-all duration-500 ${
-          scrolled 
-            ? "bg-white shadow-[0_4px_20px_rgba(0,0,0,0.1)]" 
-            : "bg-white/95 backdrop-blur-md"
+        <div className={`absolute inset-0 h-full border-b transition-all duration-500 ${
+          scrolled
+            ? "bg-[#151d29] border-white/15"
+            : "bg-[#0b1018] border-white/10"
         }`} />
         <div className="relative px-4 md:px-8 py-4">
-          <div className="max-w-7xl mx-auto flex items-center justify-between gap-6">
+          <div className="max-w-7xl mx-auto flex items-center justify-between gap-6 h-[36px]">
               {/* Logo */}
               <button
                 onClick={() => scrollTo("hero")}
                 className="flex items-center gap-3 group flex-shrink-0"
               >
                 <div className="relative">
-                  <div className="w-5 h-5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 shadow-[0_0_22px_rgba(168,85,247,0.9)]" />
-                  <div className="absolute inset-0 w-5 h-5 rounded-full bg-purple-500 animate-ping opacity-40" />
+                  <div className="w-7 h-7 rounded-lg bg-[#65d7ff] rotate-45 transition-transform duration-300 group-hover:rotate-90" />
+                  <div className="absolute inset-[7px] rounded-sm bg-[#151d29]" />
                 </div>
-                <span className="text-black uppercase tracking-[0.3em] text-sm font-bold transition-colors duration-300">
+                <span className="text-[#eef3f8] uppercase tracking-[0.2em] text-xs md:text-sm font-bold transition-colors duration-300">
                   Lakshay Saini
                 </span> 
               </button>
@@ -82,16 +82,16 @@ export default function Navbar() {
                   <button
                     key={item.name}
                     onClick={() => scrollTo(item.section)}
-                    className={`relative px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 group ${
+                    className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 group ${
                       active === item.section
-                        ? "text-black"
-                        : "text-gray-600 hover:text-black"
+                        ? "text-[#65d7ff]"
+                        : "text-[#93a1b2] hover:text-[#eef3f8]"
                     }`}
                   >
                     {active === item.section && (
                       <motion.span
                         layoutId="nav-pill"
-                        className="absolute inset-0 rounded-xl bg-gray-100 border border-gray-200"
+                        className="absolute inset-x-2 bottom-0 h-px bg-[#65d7ff]"
                         transition={{
                           type: "spring",
                           stiffness: 400,
@@ -101,7 +101,7 @@ export default function Navbar() {
                     )}
                     <span className="relative z-10">{item.name}</span>
                     {active !== item.section && (
-                      <span className="absolute left-5 right-5 -bottom-0.5 h-[2px] w-0 bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 transition-all duration-300 group-hover:w-[calc(100%-2.5rem)] rounded-full" />
+                      <span className="absolute left-4 right-4 -bottom-0.5 h-px w-0 bg-[#65d7ff] transition-all duration-300 group-hover:w-[calc(100%-2rem)]" />
                     )}
                   </button>
                 ))}
@@ -117,7 +117,7 @@ export default function Navbar() {
                   onClick={handleResumeDownload}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="hidden md:flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-500 hover:opacity-90 transition-all duration-300 px-7 py-3 rounded-xl font-bold text-sm shadow-[0_0_30px_rgba(168,85,247,0.45)] text-white"
+                  className="hidden md:flex items-center gap-2 bg-[#65d7ff] hover:bg-[#eef3f8] transition-all duration-300 px-5 py-2.5 rounded-xl font-bold text-sm text-[#0b1018]"
                 >
                   <Download size={15} />
                   Resume
@@ -125,7 +125,7 @@ export default function Navbar() {
 
                 <button
                   onClick={() => setMobileOpen((v) => !v)}
-                  className="md:hidden text-gray-700 hover:text-black transition-colors duration-200 p-2 rounded-xl hover:bg-gray-100"
+                  className="md:hidden text-[#eef3f8] hover:text-[#65d7ff] transition-colors duration-200 p-2 rounded-xl hover:bg-white/10"
                   aria-label="Toggle menu"
                 >
                   {mobileOpen ? <X size={24} /> : <Menu size={24} />}
@@ -143,7 +143,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -12, scale: 0.97 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-[90px] left-4 right-4 z-[9999] bg-white border border-gray-200 backdrop-blur-xl rounded-[24px] p-5 shadow-[0_20px_60px_rgba(0,0,0,0.1)]"
+            className="fixed top-[76px] left-4 right-4 z-[9999] bg-[#151d29] border border-white/15 backdrop-blur-xl rounded-2xl p-5 shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
           >
             <nav className="flex flex-col gap-2">
               {navItems.map((item) => (
@@ -152,8 +152,8 @@ export default function Navbar() {
                   onClick={() => scrollTo(item.section)}
                   className={`flex items-center px-5 py-4 rounded-2xl text-base font-semibold transition-all duration-200 text-left ${
                     active === item.section
-                      ? "bg-gray-100 text-black border border-gray-200"
-                      : "text-gray-600 hover:text-black hover:bg-gray-50"
+                      ? "bg-[#65d7ff] text-[#0b1018]"
+                      : "text-[#93a1b2] hover:text-[#eef3f8] hover:bg-white/5"
                   }`}
                 >
                   {item.name}
@@ -165,7 +165,7 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleResumeDownload}
-                className="flex items-center gap-2 mt-1 px-5 py-4 rounded-2xl bg-gradient-to-r from-purple-600 to-pink-500 font-bold text-base justify-center text-white"
+                className="flex items-center gap-2 mt-1 px-5 py-4 rounded-xl bg-[#65d7ff] font-bold text-base justify-center text-[#0b1018]"
               >
                 <Download size={16} />
                 Download Resume

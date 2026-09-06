@@ -92,7 +92,7 @@ const contactLinks: ContactLink[] = [
 type FormState = "idle" | "loading" | "success" | "error";
 
 const inputBase =
-  "w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder-zinc-600 outline-none transition-all duration-300 focus:border-purple-500/60 focus:bg-white/8 focus:shadow-[0_0_0_3px_rgba(168,85,247,0.12)] text-base";
+  "w-full bg-[#0f1723] border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-zinc-600 outline-none transition-all duration-300 focus:border-[#ff9f68] focus:bg-[#151f2d] focus:shadow-[0_0_0_3px_rgba(255,159,104,0.16)] text-[15px]";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
@@ -118,7 +118,7 @@ export default function Contact() {
       const data = await res.json();
 
       if (!res.ok) {
-        setErrorMsg(data.error || "Something went wrong.");
+        setErrorMsg(data.error || data.message || "Something went wrong.");
         setFormState("error");
         return;
       }
@@ -177,18 +177,25 @@ export default function Contact() {
             viewport={{ once: true }}
             className="lg:col-span-3"
           >
-            <div className="relative overflow-hidden bg-white/5 border border-white/10 rounded-[36px] p-8 md:p-10 backdrop-blur-2xl shadow-[0_0_60px_rgba(168,85,247,0.06)]">
-              {/* Subtle glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 pointer-events-none rounded-[36px]" />
+            <div className="relative overflow-hidden bg-[#151d29] border border-white/15 rounded-3xl p-6 md:p-8 shadow-[0_24px_70px_rgba(0,0,0,0.24)]">
+              <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#ff9f68] to-[#65d7ff]" />
 
-              <h3 className="relative z-10 text-2xl font-bold mb-8">Send a Message</h3>
+              <div className="relative z-10 mb-7">
+                <p className="text-[#ff9f68] text-[10px] uppercase tracking-[0.28em] font-semibold mb-2">
+                  Start a conversation
+                </p>
+                <h3 className="text-2xl md:text-3xl font-bold">Send a Message</h3>
+                <p className="text-zinc-500 text-sm mt-2 leading-6">
+                  Share a few details about your idea, timeline, or team. I&apos;ll reply personally.
+                </p>
+              </div>
 
-              <form onSubmit={handleSubmit} className="relative z-10 space-y-5">
+              <form onSubmit={handleSubmit} className="relative z-10 space-y-4">
 
                 {/* Name + Email row */}
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div className="space-y-2">
-                    <label className="text-zinc-400 text-sm font-medium" htmlFor="name">
+                    <label className="text-zinc-300 text-xs uppercase tracking-[0.14em] font-semibold" htmlFor="name">
                       Your Name
                     </label>
                     <input
@@ -205,7 +212,7 @@ export default function Contact() {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-zinc-400 text-sm font-medium" htmlFor="email">
+                    <label className="text-zinc-300 text-xs uppercase tracking-[0.14em] font-semibold" htmlFor="email">
                       Email Address
                     </label>
                     <input
@@ -224,7 +231,7 @@ export default function Contact() {
 
                 {/* Subject */}
                 <div className="space-y-2">
-                  <label className="text-zinc-400 text-sm font-medium" htmlFor="subject">
+                  <label className="text-zinc-300 text-xs uppercase tracking-[0.14em] font-semibold" htmlFor="subject">
                     Subject
                   </label>
                   <input
@@ -242,13 +249,13 @@ export default function Contact() {
 
                 {/* Message */}
                 <div className="space-y-2">
-                  <label className="text-zinc-400 text-sm font-medium" htmlFor="message">
+                  <label className="text-zinc-300 text-xs uppercase tracking-[0.14em] font-semibold" htmlFor="message">
                     Message
                   </label>
                   <textarea
                     id="message"
                     name="message"
-                    rows={6}
+                    rows={5}
                     placeholder="Tell me about your project or idea..."
                     value={form.message}
                     onChange={handleChange}
@@ -293,7 +300,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={formState === "loading" || formState === "success"}
-                  className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-purple-600 to-pink-500 hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 px-8 py-4 rounded-2xl font-semibold text-base shadow-[0_0_35px_rgba(168,85,247,0.35)] hover:scale-[1.02] active:scale-[0.98]"
+                  className="w-full flex items-center justify-center gap-3 bg-[#ff9f68] hover:bg-[#65d7ff] text-[#0b1018] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 px-8 py-3.5 rounded-xl font-bold text-sm uppercase tracking-[0.12em] shadow-[0_0_30px_rgba(255,159,104,0.2)] hover:scale-[1.01] active:scale-[0.98]"
                 >
                   {formState === "loading" ? (
                     <>
