@@ -7,7 +7,6 @@ const Services = dynamic(() => import("@/sections/Services"));
 const Projects = dynamic(() => import("@/sections/Projects"));
 const Skills = dynamic(() => import("@/sections/Skills"));
 const Achievements = dynamic(() => import("@/sections/Achievements"));
-const GitHubStats = dynamic(() => import("@/sections/GitHubStats"));
 const Testimonials = dynamic(() => import("@/sections/Testimonials"));
 const Contact = dynamic(() => import("@/sections/Contact"));
 
@@ -19,7 +18,6 @@ export default function LazyHomeSections() {
       <Projects />
       <Skills />
       <Achievements />
-      <GitHubStats />
       <Testimonials />
       <Contact />
     </>

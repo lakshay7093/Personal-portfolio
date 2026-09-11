@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { Download, Menu, X } from "lucide-react";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useResumeDownload } from "@/lib/useResumeDownload";
 
@@ -67,9 +68,14 @@ export default function Navbar() {
                 onClick={() => scrollTo("hero")}
                 className="flex items-center gap-3 group flex-shrink-0"
               >
-                <div className="relative">
-                  <div className="w-7 h-7 rounded-lg bg-[#65d7ff] rotate-45 transition-transform duration-300 group-hover:rotate-90" />
-                  <div className="absolute inset-[7px] rounded-sm bg-[#151d29]" />
+                <div className="relative w-9 h-9 overflow-hidden rounded-full border border-[#65d7ff]/60 transition-transform duration-300 group-hover:scale-110">
+                  <Image
+                    src="/self.png"
+                    alt="Lakshay Saini"
+                    fill
+                    sizes="36px"
+                    className="object-cover"
+                  />
                 </div>
                 <span className="text-[#eef3f8] uppercase tracking-[0.2em] text-xs md:text-sm font-bold transition-colors duration-300">
                   Lakshay Saini
